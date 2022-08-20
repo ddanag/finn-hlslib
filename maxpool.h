@@ -449,10 +449,10 @@ template<
 void LabelSelect_Batch(stream<ap_uint<PECount * In_T::width> > & in,
         stream<Out_T> & out, const unsigned int numReps) { 
 
-  const Out_T Out_T_MAX_VAL = (Out_T(-1)<0)? ~(1<<(Out_T::width-1)) : ~(0);
+  const Out_T Out_T_MAX_VAL = (Out_T(-1)<0)? ~(1ULL<<(Out_T::width-1)) : ~(0);
   CASSERT_DATAFLOW(Out_T_MAX_VAL >= NumClasses-1);
 
-  const In_T In_T_MIN_VAL = (In_T(-1)<0)? 1<<(In_T::width-1) : 0;
+  const In_T In_T_MIN_VAL = (In_T(-1)<0)? 1ULL<<(In_T::width-1) : 0;
   ap_uint<PECount * In_T::width> inval;
 
   Out_T toplabels[NumTop];
